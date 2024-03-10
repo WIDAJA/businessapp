@@ -3,16 +3,36 @@ import "@fontsource-variable/podkova";
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
 import Input from "../components/Input.astro";
+
+const businessTypes = [
+  {
+    text: "BARBERÍA",
+    color: "bg-red-600",
+  },
+  {
+    text: "PELUQUERÍA",
+    color: "bg-green-600",
+  },
+  {
+    text: "SALÓN DE BELLEZA",
+    color: "bg-blue-600",
+  },
+  {
+    text: "SPA",
+    color: "bg-accent",
+  },
+];
 ---
 
 <Layout title="Businessapp - Inicio">
   <article class="grid grid-cols-3">
     <section class="col-span-2">
       <h1 class="text-5xl">
-        Impulsa el exito de tu <span class="bg-accent px-3 text-primary"
-          >BARBERÍA</span
-        > con un espacio único que permita a los clientes reservar citas, consultar
-        servicios, estar al tanto de noticias y mucho más.
+        Impulsa el exito de tu <span
+          id="txtBusinessType"
+          class="transition-all px-3 text-primary"></span> con un espacio único que
+        permita a los clientes reservar citas, consultar servicios, estar al tanto
+        de noticias y mucho más.
       </h1>
 
       <div class="grid grid-cols-2 bg-black/30 rounded-3xl mt-10 p-5">
@@ -54,3 +74,22 @@ import Input from "../components/Input.astro";
     font-family: "Podkova Variable", serif;
   }
 </style>
+
+<script define:vars={{ businessTypes }}>
+  let index = 0;
+  const type = document.getElementById("txtBusinessType");
+
+  const changeBusinessType = () => {
+    const { text, color } = businessTypes[index++];
+
+    type.innerText = text.toUpperCase();
+
+    type.classList.remove(type.classList[type.classList.length - 1]);
+    type.classList.add(color);
+
+    if (index === businessTypes.length) index = 0;
+  };
+
+  changeBusinessType();
+  setInterval(changeBusinessType, 1000 * 5);
+</script>

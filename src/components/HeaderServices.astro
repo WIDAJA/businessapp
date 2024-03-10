@@ -1,0 +1,24 @@
+---
+import HeaderServicesButton from "./HeaderServicesButton.astro";
+
+interface Menu {
+  id: string;
+  name: string;
+  icon: string;
+  text: string;
+}
+
+interface Props {
+  menu: Menu[];
+}
+
+const { menu } = Astro.props;
+---
+
+<nav class="bg-accent rounded-full flex flex-row gap-20 items-center">
+  {
+    menu.map((x) => (
+      <HeaderServicesButton name={x.name} icon={x.icon} id={x.id} />
+    ))
+  }
+</nav>

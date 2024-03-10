@@ -1,14 +1,16 @@
 ---
 interface Props {
   href: string;
+  id: string;
 }
 
-const { href } = Astro.props;
+const { href, id } = Astro.props;
 ---
 
 <a
+  id={id}
   href={href}
-  class="flex gap-2 items-center text-[17px] text-white border-b-2 border-transparent pb-1 cursor-pointer transition-all hover:text-xl hover:border-b-accent"
+  class="flex gap-2 items-center text-[17px] text-white border-b-2 border-transparent pb-1 cursor-pointer transition-all hover:border-b-accent"
 >
   <slot name="before" />
   <slot />
