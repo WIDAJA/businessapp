@@ -1,0 +1,56 @@
+---
+import "@fontsource-variable/podkova";
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import Input from "../components/Input.astro";
+---
+
+<Layout title="Businessapp - Inicio">
+  <article class="grid grid-cols-3">
+    <section class="col-span-2">
+      <h1 class="text-5xl">
+        Impulsa el exito de tu <span class="bg-accent px-3 text-primary"
+          >BARBERÍA</span
+        > con un espacio único que permita a los clientes reservar citas, consultar
+        servicios, estar al tanto de noticias y mucho más.
+      </h1>
+
+      <div class="grid grid-cols-2 bg-black/30 rounded-3xl mt-10 p-5">
+        <div
+          class="flex flex-col gap-5 justify-center border-r-2 border-white/80 p-5"
+        >
+          <h2 class="text-2xl text-center font-bold">
+            ¿Quieres recibir más información sobre este proyecto?
+          </h2>
+          <p class="text-center">
+            Te mantendremos informado acerca de nuevas funcionalidades y
+            servicios que tenemos para tí.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-5 justify-center p-6">
+          <Input
+            id="txtEmail"
+            title="Correo electrónico"
+            type="email"
+            placeholder="Ingresa tu correo electrónico"
+          />
+          <Button />
+        </div>
+      </div>
+    </section>
+    <section class="flex justify-end">
+      <img
+        class="w-3/4"
+        src="/assets/img/phone-dashboard.svg"
+        alt="Pantallazo del dashboard de la aplicación"
+      />
+    </section>
+  </article>
+</Layout>
+
+<style>
+  h1 {
+    font-family: "Podkova Variable", serif;
+  }
+</style>

@@ -1,0 +1,30 @@
+---
+import HeaderButton from "./HeaderButton.astro";
+---
+
+<header class="flex flex-row justify-between w-full items-center">
+  <img src="/assets/img/logo.svg" alt="Logo de businessapp" />
+
+  <nav class="flex gap-7">
+    <HeaderButton href="/">
+      <img src="/assets/icons/home.svg" alt="Icono de inicio" slot="before" />
+      Inicio
+    </HeaderButton>
+    <HeaderButton href="services">
+      <img
+        src="/assets/icons/service.svg"
+        alt="Icono de servicios"
+        slot="before"
+      />
+      Servicios
+    </HeaderButton>
+    <HeaderButton href="services">
+      <img
+        src="/assets/icons/service.svg"
+        alt="Icono de servicios"
+        slot="before"
+      />
+      Contáctanos
+    </HeaderButton>
+  </nav>
+</header>
