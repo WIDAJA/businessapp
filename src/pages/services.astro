@@ -58,15 +58,9 @@ const menu: Menu[] = [
   }
 </style>
 
-<script define:vars={{ menu }}>
-  //#region Props
-
+<script is:inline define:vars={{ menu }}>
   const title = document.getElementById("txtTitle");
   const parragraph = document.getElementById("txtText");
-
-  //#endregion
-
-  //#region Methods
 
   const removeSelectedClass = () => {
     for (const m of menu) {
@@ -83,10 +77,6 @@ const menu: Menu[] = [
     ev.target.classList.add("bg-white");
   };
 
-  //#endregion
-
-  //#region Constructor
-
   (() => {
     for (const m of menu) {
       document
@@ -96,6 +86,4 @@ const menu: Menu[] = [
 
     document.getElementById(menu[0].id).click();
   })();
-
-  //#endregion
 </script>
