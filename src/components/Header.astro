@@ -41,17 +41,11 @@ const menu = [
   </nav>
 </header>
 
-<script define:vars={{ menu }}>
-  //#region Methods
-
+<script is:inline define:vars={{ menu }}>
   const setSelectedClass = ({ id }) => {
     const anchor = document.getElementById(id);
     anchor.classList.add("border-b-accent");
   };
-
-  //#endregion
-
-  //#region Constructor
 
   (() => {
     const { pathname } = new URL(window.location);
@@ -64,6 +58,4 @@ const menu = [
 
     setSelectedClass(menu[index]);
   })();
-
-  //#endregion
 </script>
