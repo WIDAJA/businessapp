@@ -1,5 +1,6 @@
 ---
 import "@fontsource-variable/podkova";
+import '../styles/variables.css'
 import Layout from "../layouts/Layout.astro";
 import HeaderServices from "../components/HeaderServices.astro";
 
@@ -7,6 +8,7 @@ interface Menu {
   id: string;
   name: string;
   icon: string;
+  sectionHTML: string;
   text: string;
 }
 
@@ -15,24 +17,39 @@ const menu: Menu[] = [
     id: "btnPortafolio",
     name: "Portafolio",
     icon: "/assets/icons/app-window.svg",
-    text: "Cada uno de tus negocios tendrá un espacio exclusivo en nuestra plataforma. Comparte fácilmente la URL o código QR con tus clientes para acceder a información sobre servicios, noticias y citas.",
+    sectionHTML: `
+      <img
+        class="max-w-full max-h-full h-auto object-fit-cover"
+        src="/assets/img/phone-dashboard.svg"
+        alt="Pantallazo del dashboard de la aplicación"
+      />
+      <img
+        class="h-96 w-auto object-fit-cover"
+        src="/assets/img/phone-dashboard.svg"
+        alt="Pantallazo del dashboard de la aplicación"
+      />
+    `,
+    text: "Cada uno de tus negocios tendrá un espacio exclusivo en nuestra plataforma. Comparte fácilmente la URL o código QR con tus clientes para que accedan a información sobre servicios, noticias y citas.",
   },
   {
     id: "btnCalendar",
     name: "Agenda",
     icon: "/assets/icons/calendar.svg",
+    sectionHTML: '',
     text: "Cada profesional de tu negocio podrá recibir solicitudes de servicios a través de nuestro sistema de agendamiento diseñado para tus clientes.",
   },
   {
     id: "btnBusiness",
     name: "Gestión del negocio",
     icon: "/assets/icons/business.svg",
+    sectionHTML: '',
     text: "Podrás administrar varios negocios desde una sola cuenta, registrando profesionales, servicios ofrecidos, ingresos, egresos, inventario y manteniendo una base de datos de tus clientes.",
   },
   {
     id: "btnReports",
     name: "Reportes",
     icon: "/assets/icons/reports.svg",
+    sectionHTML: '',
     text: "Tendrás informes del flujo de caja, servicios más demandados, ingresos por periodos de tiempo, clientes más recurrentes, etc.",
   },
 ];
@@ -40,14 +57,16 @@ const menu: Menu[] = [
 
 <Layout title="Businessapp - Servicios">
   <HeaderServices menu={menu} />
-  <article class="grid grid-cols-2 mt-20">
-    <section></section>
-    <section>
-      <header>
-        <h1 class="text-6xl font-bold" id="txtTitle"></h1>
-      </header>
-      <p class="text-4xl mt-5" id="txtText"></p>
-    </section>
+  <article class="pt-10 h-full">
+    <div class="h-full flex services-container">
+      <section class="h-full flex flex-1 gap-5 items-end" id="sectionContent"></section>
+      <section class="h-full flex-1 flex justify-center flex-col">
+        <header>
+          <h1 class="text-6xl font-bold" id="txtTitle"></h1>
+        </header>
+        <p class="text-4xl mt-5" id="txtText"></p>
+      </section>
+    </div>
   </article>
 </Layout>
 
@@ -56,10 +75,15 @@ const menu: Menu[] = [
   h3 {
     font-family: "Podkova Variable", serif;
   }
+
+  .services-container {
+    height: calc(100vh - var(--inner-service-top)) !important;
+  }
 </style>
 
 <script is:inline define:vars={{ menu }}>
   const title = document.getElementById("txtTitle");
+  const section = document.getElementById("sectionContent");
   const parragraph = document.getElementById("txtText");
 
   const removeSelectedClass = () => {
@@ -69,8 +93,9 @@ const menu: Menu[] = [
     }
   };
 
-  const selectedMenu = (ev, { name, text }) => {
+  const selectedMenu = (ev, { name, text, sectionHTML }) => {
     title.innerText = name;
+    section.innerHTML = sectionHTML;
     parragraph.innerText = text;
 
     removeSelectedClass();
