@@ -8,8 +8,10 @@ export default class ProspectForm extends Component {
 
   saveEmail = () => {
 
+    const { email } = this.state;
+
     const init = {
-      body: JSON.stringify({ email: 'daniel@gmail.com' }),
+      body: JSON.stringify({ email }),
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
