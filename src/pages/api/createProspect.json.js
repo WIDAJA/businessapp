@@ -1,7 +1,6 @@
-import type { APIRoute } from "astro";
 import { db, Prospect } from "astro:db";
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST = async ({ request }) => {
 
   try {
 
@@ -25,8 +24,12 @@ export const POST: APIRoute = async ({ request }) => {
 
   } catch (error) {
 
-    return new Response(JSON.stringify({
-      message: "En este momento el servicio no se encuentra activo. Por favor intenta de nuevo mas tarde."
-    }), { status: 500 });
+    let message = "En este momento el servicio no se encuentra activo. Por favor intenta de nuevo mas tarde."
+
+    if (error?.code === "SQLITE_CONSTRAINT_UNIQUE") {
+      message = "El correo ingresado ya se encuentra registrado"
+    }
+
+    return new Response(JSON.stringify({ message }), { status: 500 });
   }
 }

@@ -1,7 +1,6 @@
 ---
 import "@fontsource-variable/podkova";
-import Button from "./Button.astro";
-import Input from "./Input.astro";
+import ProspectForm from "../Preact/ProspectForm";
 
 const businessTypes = [
   {
@@ -52,16 +51,7 @@ const businessTypes = [
         </p>
       </div>
 
-      <form method="post" class="flex flex-col gap-5 justify-center p-6">
-        <Input
-          id="txtEmail"
-          name="txtEmail"
-          title="Correo electrónico"
-          type="email"
-          placeholder="Ingresa tu correo electrónico"
-        />
-        <Button />
-      </form>
+      <ProspectForm client:load />
     </div>
   </section>
   <section class="flex items-baseline justify-end mt-10 gap-2">

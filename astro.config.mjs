@@ -1,12 +1,21 @@
 import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
-
 import db from "@astrojs/db";
+import preact from "@astrojs/preact";
+
+import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
-  integrations: [tailwind(), db()],
+  output: 'hybrid',
+  integrations: [tailwind(), db(), preact({
+    compat: true
+  })],
   site: 'http://mybusinesapp.com/',
-  server: { port: 3001 }
+  server: {
+    port: 3001
+  },
+  adapter: node({
+    mode: "standalone"
+  })
 });
