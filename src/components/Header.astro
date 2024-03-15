@@ -5,28 +5,23 @@ const menu = [
   {
     id: "btnHome",
     text: "Inicio",
-    href: "/",
+    href: "/#top",
     icon: "/assets/icons/home.svg",
     alt: "Icono de inicio",
   },
   {
     id: "btnServices",
     text: "Servicios",
-    href: "/services",
+    href: "/#services",
     icon: "/assets/icons/service.svg",
     alt: "Icono de Servicios",
-  },
-  {
-    id: "btnContactUs",
-    text: "Contáctanos",
-    href: "/",
-    icon: "/assets/icons/contact.svg",
-    alt: "Icono de contáctanos",
   },
 ];
 ---
 
-<header class="flex flex-row justify-between w-full items-center">
+<header
+  class="flex flex-row justify-between w-full items-center sticky top-0 py-2 px-10 z-10"
+>
   <img src="/assets/img/logo.svg" alt="Logo de businessapp" />
 
   <nav class="flex gap-7">
@@ -41,21 +36,45 @@ const menu = [
   </nav>
 </header>
 
+<style>
+  header {
+    animation: enhance-header linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 400px;
+  }
+
+  @keyframes enhance-header {
+    to {
+      background-color: var(--color-secondary);
+      backdrop-filter: blur(5px);
+      border-bottom: 2px solid white;
+    }
+  }
+</style>
+
 <script is:inline define:vars={{ menu }}>
-  const setSelectedClass = ({ id }) => {
+  const BORDER_CLASS = "border-b-accent";
+
+  const setSelectedClass = (id) => {
     const anchor = document.getElementById(id);
-    anchor.classList.add("border-b-accent");
+    anchor.classList.add(BORDER_CLASS);
   };
 
-  (() => {
-    const { pathname } = new URL(window.location);
+  const removeSelectedClass = (id) => {
+    menu.forEach((x) =>
+      document.getElementById(x.id).classList.remove(BORDER_CLASS),
+    );
 
-    const index = menu.findIndex((x) => x.href === pathname);
+    setSelectedClass(id);
+  };
 
-    if (index === -1) {
-      return;
-    }
+  const addClickListener = () => {
+    menu.forEach(({ id }) => {
+      document.getElementById(id).addEventListener("click", () => {
+        removeSelectedClass(id);
+      });
+    });
+  };
 
-    setSelectedClass(menu[index]);
-  })();
+  addClickListener();
 </script>

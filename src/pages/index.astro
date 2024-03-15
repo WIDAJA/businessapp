@@ -1,101 +1,17 @@
 ---
-import "@fontsource-variable/podkova";
 import Layout from "../layouts/Layout.astro";
-import Button from "../components/Button.astro";
-import Input from "../components/Input.astro";
-
-const businessTypes = [
-  {
-    text: "BARBERÍA",
-    color: "bg-red-600",
-  },
-  {
-    text: "PELUQUERÍA",
-    color: "bg-green-600",
-  },
-  {
-    text: "SALÓN DE BELLEZA",
-    color: "bg-blue-600",
-  },
-  {
-    text: "SPA",
-    color: "bg-accent",
-  },
-];
+import Home from "../components/Home.astro";
+import Header from "../components/Header.astro";
+import Services from "../components/Services.astro";
 ---
 
-<Layout title="Businessapp - Inicio">
-  <article class="grid grid-cols-3 h-full">
-    <section class="col-span-2">
-      <h1 class="text-5xl">
-        <p class="text-nowrap">
-          Impulsa el éxito de tu
-          <span
-            id="txtBusinessType"
-            class="transition-all
-              px-3
-              text-primary"
-          >
-          </span>
-        </p>
-        con un espacio único que permita a tus clientes reservar citas, consultar
-        servicios, estar al tanto de noticias y mucho más.
-      </h1>
-      <div class="grid grid-cols-2 bg-black/30 rounded-3xl mt-10 p-5">
-        <div
-          class="flex flex-col gap-5 justify-center border-r-2 border-white/80 p-5"
-        >
-          <h2 class="text-2xl text-center font-bold">
-            ¿Quieres recibir más información sobre este proyecto?
-          </h2>
-          <p class="text-center">
-            Te mantendremos informado acerca de nuevas funcionalidades y
-            servicios que tenemos para ti.
-          </p>
-        </div>
-
-        <div class="flex flex-col gap-5 justify-center p-6">
-          <Input
-            id="txtEmail"
-            title="Correo electrónico"
-            type="email"
-            placeholder="Ingresa tu correo electrónico"
-          />
-          <Button />
-        </div>
-      </div>
-    </section>
-    <section class="flex justify-end">
-      <img
-        class="w-3/4"
-        src="/assets/img/phone-dashboard.svg"
-        alt="Pantallazo del dashboard de la aplicación"
-      />
-    </section>
-  </article>
+<Layout title="Businessapp">
+  <Header />
+  <main class="px-20">
+    <Home />
+    <Services />
+  </main>
+  <!-- <div id="home" class="pt-10">
+    
+  </div> -->
 </Layout>
-
-<style>
-  h1 {
-    font-family: "Podkova Variable", serif;
-  }
-</style>
-
-<script is:inline define:vars={{ businessTypes }}>
-  let index = 0;
-  const type = document.getElementById("txtBusinessType");
-
-  const changeBusinessType = () => {
-    const { text, color } = businessTypes[index++];
-
-    type.innerText = text.toUpperCase();
-
-    type.classList.remove(type.classList[type.classList.length - 1]);
-    type.classList.add(color);
-
-    if (index === businessTypes.length) index = 0;
-  };
-
-  changeBusinessType();
-  setInterval(changeBusinessType, 1000 * 5);
-</script>

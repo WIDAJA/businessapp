@@ -14,27 +14,62 @@ const { title } = Astro.props;
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta
+			name="description"
+			content="MyBusinessApp es una software que ayuda a profesionalizar negocios cómo barberías, peluquerías, salones de belleza, etc. Entregan una amplia variedad de herramientas tales como: creación de negocios, trabajadores, servicios, agendamiento virtual y un espacio para los clientes donde pueden visualizar promociones, fotos de los trabajos realizados, agendar citas y demás."
+		/>
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<ViewTransitions />
-	</head>
-	<body class="bg-primary px-20 py-10 min-h-screen">
-		<Header />
-		<main class="mt-10">
-			<slot />
-		</main>
-	</body><style is:global>
-		html {
-			font-family: "Plus Jakarta Sans Variable", sans-serif;
-			color-scheme: dark;
-		}
 
-		body {
-			background-image: url("/assets/img/effect.svg");
-			background-repeat: round;
-		}
-	</style>
+		<!-- open graph -->
+		<meta property="og:title" content="..." />
+		<meta property="og:description" content="..." />
+		<meta property="og:image" content="/..." />
+		<meta property="og:image:alt" content="..." />
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<ViewTransitions />
+
+		<style is:global>
+			html {
+				font-family: "Plus Jakarta Sans Variable", sans-serif;
+				color-scheme: dark;
+				scroll-behavior: smooth;
+			}
+
+			body {
+				background-image: url("/assets/img/effect.svg");
+				background-repeat: round;
+			}
+		</style>
+	</head>
+	<body class="bg-primary min-h-screen">
+		<slot />
+		<a
+			id="btnGoToUp"
+			href="/#top"
+			class="w-14 h-14 rounded-xl hidden right-5 bottom-5 fixed bg-accent justify-center items-center transition-all hover:border-4 hover:border-white"
+		>
+			<img
+				src="/assets/icons/arrow-up.svg"
+				alt="Icono de flecha hacia arriba"
+			/>
+		</a>
+		<script>
+			window.onscroll = () => {
+				const buttonGoToUp = document.getElementById("btnGoToUp");
+
+				buttonGoToUp?.classList.remove("flex", "hidden");
+				if (
+					document.body.scrollTop > 20 ||
+					document.documentElement.scrollTop > 20
+				) {
+					buttonGoToUp?.classList.add("flex");
+				} else {
+					buttonGoToUp?.classList.add("hidden");
+				}
+			};
+		</script>
+	</body>
 </html>
