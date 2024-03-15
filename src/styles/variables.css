@@ -1,4 +1,6 @@
 :root {
+    --color-primary: #16132C;
+    --color-secondary: #2E294E;
     --header-desktop-height: 50px;
     --nav-desktop-height: 40px;
     --inner-service-top: calc(90px + 12.5rem)
