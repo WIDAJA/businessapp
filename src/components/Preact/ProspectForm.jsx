@@ -1,4 +1,5 @@
 import { Component } from "preact";
+import confetti from "canvas-confetti";
 
 export default class ProspectForm extends Component {
 
@@ -20,12 +21,26 @@ export default class ProspectForm extends Component {
 
     fetch('http://localhost:3001/api/createProspect.json', init)
       .then(response => response.json())
-      .then(({ sucess, message }) => {
-        alert(message);
+      .then(({ success, message }) => {
+
+
+
+        if (success) {
+          this.showConfetti();
+        }
       })
       .catch(err => {
         debugger;
-      })
+      });
+  };
+
+  showConfetti = () => {
+
+    confetti({
+      particleCount: 200,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
   };
 
   render({ }, { email }) {
@@ -65,5 +80,5 @@ export default class ProspectForm extends Component {
 
       </form>
     )
-  }
+  };
 }

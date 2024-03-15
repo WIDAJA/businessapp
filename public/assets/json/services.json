@@ -1,0 +1,62 @@
+[
+  {
+    "id": "btnPortafolio",
+    "name": "Portafolio",
+    "icon": "/assets/icons/app-window.svg",
+    "text": "Cada uno de tus negocios tendrá un espacio exclusivo en nuestra plataforma. Comparte fácilmente la URL o código QR con tus clientes para que accedan a información sobre servicios, noticias y citas.",
+    "images": [
+      {
+        "name": "/assets/img/phone-dashboard-1.svg",
+        "alt": "Imagen representativa de la sección dashboard de la app"
+      }
+    ]
+  },
+  {
+    "id": "btnCalendar",
+    "name": "Agenda",
+    "icon": "/assets/icons/calendar.svg",
+    "text": "Cada profesional de tu negocio podrá recibir solicitudes de servicios a través de nuestro sistema de agendamiento diseñado para tus clientes.",
+    "images": [
+      {
+        "name": "/assets/img/phone-calendar-1.svg",
+        "alt": "Imagen representativa de la sección agenda de la app"
+      },
+      {
+        "name": "/assets/img/phone-calendar-2.svg",
+        "alt": "Imagen representativa de la sección agenda de la app"
+      }
+    ]
+  },
+  {
+    "id": "btnBusiness",
+    "name": "Gestión del negocio",
+    "icon": "/assets/icons/business.svg",
+    "text": "Podrás administrar varios negocios desde una sola cuenta, registrando profesionales, servicios ofrecidos, ingresos, egresos, inventario y manteniendo una base de datos de tus clientes.",
+    "images": [
+      {
+        "name": "/assets/img/phone-business-1.svg",
+        "alt": "Imagen representativa de la sección negocios de la app"
+      },
+      {
+        "name": "/assets/img/phone-business-2.svg",
+        "alt": "Imagen representativa de la sección negocios de la app"
+      }
+    ]
+  },
+  {
+    "id": "btnReports",
+    "name": "Reportes",
+    "icon": "/assets/icons/reports.svg",
+    "text": "Tendrás informes del flujo de caja, servicios más demandados, ingresos por periodos de tiempo, clientes más recurrentes, etc.",
+    "images": [
+      {
+        "name": "/assets/img/phone-report-1.svg",
+        "alt": "Imagen representativa de la sección reportes de la app"
+      },
+      {
+        "name": "/assets/img/phone-report-2.svg",
+        "alt": "Imagen representativa de la sección reportes de la app"
+      }
+    ]
+  }
+]

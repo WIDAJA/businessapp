@@ -6,70 +6,54 @@ import HeaderServices from "./HeaderServices.astro";
 interface Menu {
   id: string;
   name: string;
-  icon: string;
-  sectionHTML: string;
   text: string;
+  icon: string;
+  images: {
+    name: string;
+    alt: string;
+  }[];
 }
 
-const menu: Menu[] = [
-  {
-    id: "btnPortafolio",
-    name: "Portafolio",
-    icon: "/assets/icons/app-window.svg",
-    sectionHTML: `
-      <img
-        class="max-w-full max-h-full h-auto object-fit-cover"
-        src="/assets/img/phone-dashboard.svg"
-        alt="Pantallazo del dashboard de la aplicación"
-      />
-      <img
-        class="h-96 w-auto object-fit-cover"
-        src="/assets/img/phone-dashboard.svg"
-        alt="Pantallazo del dashboard de la aplicación"
-      />
-    `,
-    text: "Cada uno de tus negocios tendrá un espacio exclusivo en nuestra plataforma. Comparte fácilmente la URL o código QR con tus clientes para que accedan a información sobre servicios, noticias y citas.",
-  },
-  {
-    id: "btnCalendar",
-    name: "Agenda",
-    icon: "/assets/icons/calendar.svg",
-    sectionHTML: "",
-    text: "Cada profesional de tu negocio podrá recibir solicitudes de servicios a través de nuestro sistema de agendamiento diseñado para tus clientes.",
-  },
-  {
-    id: "btnBusiness",
-    name: "Gestión del negocio",
-    icon: "/assets/icons/business.svg",
-    sectionHTML: "",
-    text: "Podrás administrar varios negocios desde una sola cuenta, registrando profesionales, servicios ofrecidos, ingresos, egresos, inventario y manteniendo una base de datos de tus clientes.",
-  },
-  {
-    id: "btnReports",
-    name: "Reportes",
-    icon: "/assets/icons/reports.svg",
-    sectionHTML: "",
-    text: "Tendrás informes del flujo de caja, servicios más demandados, ingresos por periodos de tiempo, clientes más recurrentes, etc.",
-  },
-];
+let menu: Menu[] = [];
+
+const result = await fetch("http://localhost:3001/assets/json/services.json");
+menu = await result.json();
 ---
 
 <article class="h-screen px-20" id="services">
   <HeaderServices menu={menu} />
-  <div class="flex services-container mt-20">
-    <section class="flex flex-1 gap-5 items-end" id="sectionContent"></section>
-    <section class="flex-1 flex justify-center flex-col">
-      <header>
-        <h1 class="text-6xl font-bold" id="txtTitle"></h1>
-      </header>
-      <p class="text-4xl mt-5" id="txtText"></p>
-    </section>
-  </div>
+  {
+    menu.map((x) => {
+      return (
+        <section
+          class="justify-center items-center gap-10 mt-10 hidden"
+          id=`service${x.id}`
+        >
+          {x.images.map((y) => {
+            return (
+              <img
+                class="max-w-full max-h-full h-auto object-fit-cover"
+                src={y.name}
+                alt={y.alt}
+              />
+            );
+          })}
+
+          <div class="flex justify-center flex-col">
+            <header>
+              <h1 class="text-4xl font-bold">{x.name}</h1>
+            </header>
+            <p class="text-3xl mt-5">{x.text}</p>
+          </div>
+        </section>
+      );
+    })
+  }
 </article>
 
 <style>
   h1,
-  h3 {
+  p {
     font-family: "Podkova Variable", serif;
   }
 
@@ -79,39 +63,9 @@ const menu: Menu[] = [
     ) !important;
   }
 
-  .services-container {
-    height: calc(100vh - var(--inner-service-top)) !important;
+  section {
+    height: calc(
+      100vh - var(--nav-desktop-height) - var(--header-desktop-height) - 6rem
+    ) !important;
   }
 </style>
-
-<script is:inline define:vars={{ menu }}>
-  const title = document.getElementById("txtTitle");
-  const section = document.getElementById("sectionContent");
-  const parragraph = document.getElementById("txtText");
-
-  const removeSelectedClass = () => {
-    for (const m of menu) {
-      document.getElementById(m.id)?.classList.remove("bg-white");
-      document.getElementById(m.id)?.classList.add("hover:bg-white");
-    }
-  };
-
-  const selectedMenu = (ev, { name, text, sectionHTML }) => {
-    title.innerText = name;
-    section.innerHTML = sectionHTML;
-    parragraph.innerText = text;
-
-    removeSelectedClass();
-    ev.target.classList.add("bg-white");
-  };
-
-  (() => {
-    for (const m of menu) {
-      document
-        .getElementById(m.id)
-        ?.addEventListener("click", (ev) => selectedMenu(ev, m));
-    }
-
-    document.getElementById(menu[0].id).click();
-  })();
-</script>

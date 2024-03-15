@@ -23,15 +23,26 @@ const businessTypes = [
 ---
 
 <article class="grid grid-cols-3 mb-20 gap-5 px-20">
+  <section class="flex items-baseline justify-end mt-10 gap-2">
+    <img
+      class="h-full"
+      src="/assets/img/phone-dashboard-1.svg"
+      alt="Pantallazo del dashboard de la aplicación"
+    />
+    <img
+      class="h-3/4"
+      src="/assets/img/phone-menu.svg"
+      alt="Pantallazo del dashboard de la aplicación"
+    />
+  </section>
+
   <section class="col-span-2 mt-20">
-    <h1 class="text-5xl px-2">
+    <h1 class="text-5xl px-2 text-center">
       <p class="text-nowrap">
         Impulsa el éxito de tu
         <span
           id="txtBusinessType"
-          class="transition-all
-              px-3
-              text-primary"
+          class="transition-all rounded-full px-8 text-primary"
         >
         </span>
       </p>
@@ -50,21 +61,8 @@ const businessTypes = [
           que tenemos para ti.
         </p>
       </div>
-
       <ProspectForm client:load />
     </div>
-  </section>
-  <section class="flex items-baseline justify-end mt-10 gap-2">
-    <img
-      class="h-full"
-      src="/assets/img/phone-dashboard.svg"
-      alt="Pantallazo del dashboard de la aplicación"
-    />
-    <img
-      class="h-3/4"
-      src="/assets/img/phone-menu.svg"
-      alt="Pantallazo del dashboard de la aplicación"
-    />
   </section>
 </article>
 

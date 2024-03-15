@@ -5,7 +5,6 @@ interface Menu {
   id: string;
   name: string;
   icon: string;
-  text: string;
 }
 
 interface Props {
@@ -15,10 +14,43 @@ interface Props {
 const { menu } = Astro.props;
 ---
 
-<nav class="bg-accent rounded-full flex flex-row gap-20 items-center">
+<nav
+  class="bg-accent rounded-full flex flex-row gap-20 items-center justify-center"
+>
   {
     menu.map((x) => (
       <HeaderServicesButton name={x.name} icon={x.icon} id={x.id} />
     ))
   }
 </nav>
+
+<script is:inline define:vars={{ menu }}>
+  const removeSelectedClass = () => {
+    for (const { id } of menu) {
+      document.getElementById(id)?.classList.remove("bg-white");
+      document.getElementById(id)?.classList.add("hover:bg-white");
+
+      document.getElementById("service" + id)?.classList.remove("flex");
+      document.getElementById("service" + id)?.classList.add("hidden");
+    }
+  };
+
+  const selectedMenu = (ev, id) => {
+    ev.stopPropagation();
+
+    removeSelectedClass();
+    ev.target.classList.add("bg-white");
+    document.getElementById("service" + id)?.classList.remove("hidden");
+    document.getElementById("service" + id)?.classList.add("flex");
+  };
+
+  for (const { id } of menu) {
+    document
+      .getElementById(id)
+      ?.addEventListener("click", (ev) => selectedMenu(ev, id));
+  }
+
+  setTimeout(() => {
+    document.getElementById(menu[0].id).click();
+  }, 500);
+</script>

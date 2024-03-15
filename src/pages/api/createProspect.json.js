@@ -19,6 +19,7 @@ export const POST = async ({ request }) => {
     }
 
     return new Response(JSON.stringify({
+      success: false,
       message: "El correo ingresado es inválido"
     }), { status: 400 });
 
