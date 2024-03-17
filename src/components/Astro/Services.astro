@@ -16,8 +16,12 @@ interface Menu {
 
 let menu: Menu[] = [];
 
-const result = await fetch("http://localhost:3001/assets/json/services.json");
-menu = await result.json();
+try {
+  const result = await fetch("http://localhost:4321/assets/json/services.json");
+  menu = await result.json();
+} catch (error) {
+  console.log('error loading services > ', error);
+}
 ---
 
 <article class="h-screen px-20" id="services">
