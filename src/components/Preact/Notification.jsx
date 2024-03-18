@@ -4,23 +4,32 @@ import ErrorIcon from "./ErrorIcon";
 
 export default class Notification extends Component {
 
-  render({ message, success, show }, { }) {
+  render({ message, success, show, onClose }) {
+
+    let color = success ? 'bg-green-400' : 'bg-red-400';
+    let className = '';
+
+    if (show) {
+      className = `text-black fixed bottom-5 h-14 p-5 rounded-xl shadow-2xl flex items-center gap-4 ${color}`;
+    } else {
+      className = 'hidden';
+    }
 
     return (
       <section
-        className={show ? 'bg-green-400 text-black fixed bottom-5 h-14 p-5 rounded-xl shadow-2xl flex items-center gap-4' : 'hidden'}>
+        className={className}>
         {
           success
-            ? <ErrorIcon stroke="red" />
-            : <CheckIcon stroke="green" />
+            ? <CheckIcon stroke="green" />
+            : <ErrorIcon stroke="#912623" />
         }
-        <h1 class="font-semibold">
+        <pre class="font-semibold">
           {message}
-        </h1>
+        </pre>
         <button
           type="button"
           class="text-black cursor-pointer"
-          onClick={this.setState({ show: false })}>
+          onClick={onClose}>
           ✖
         </button>
       </section>

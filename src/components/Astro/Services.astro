@@ -1,6 +1,7 @@
 ---
 import "@fontsource-variable/podkova";
 import "../../styles/variables.css";
+import config from "../../../astro.config.mjs";
 import HeaderServices from "./HeaderServices.astro";
 
 interface Menu {
@@ -16,12 +17,8 @@ interface Menu {
 
 let menu: Menu[] = [];
 
-try {
-  const result = await fetch("http://localhost:4321/assets/json/services.json");
-  menu = await result.json();
-} catch (error) {
-  console.log('error loading services > ', error);
-}
+const result = await fetch(`http://localhost:${config.server.port}/assets/json/services.json`);
+menu = await result.json();
 ---
 
 <article class="h-screen px-20" id="services">

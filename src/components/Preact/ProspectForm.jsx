@@ -26,24 +26,34 @@ export default class ProspectForm extends Component {
 
         this.setState({ message });
         this.setState({ success });
-        this.setState({ show: true });
 
         if (success) {
           this.showConfetti();
         }
       })
       .catch(err => {
+        // @todo -> Mostart el mensaje
+      })
+      .finally(() => {
         this.setState({ show: true });
+        this.setState({ email: '' });
+
+        setTimeout(() => {
+          this.closeNotify();
+        }, 1000 * 5);
       });
   };
 
   showConfetti = () => {
-
     confetti({
       particleCount: 200,
       spread: 70,
       origin: { y: 0.6 }
     });
+  };
+
+  closeNotify = () => {
+    this.setState({ show: false });
   };
 
   render({ }, { email, message, success, show }) {
@@ -83,7 +93,7 @@ export default class ProspectForm extends Component {
           </button>
 
         </form>
-        <Notification message={message} success={success} show={show} />
+        <Notification message={message} success={success} show={show} onClose={this.closeNotify} />
       </>
     )
   };

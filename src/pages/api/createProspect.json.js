@@ -14,7 +14,7 @@ export const POST = async ({ request }) => {
 
       return new Response(JSON.stringify({
         success: true,
-        message: '¡Correo electrónico registrado exitosamente!'
+        message: '¡Correo electrónico registrado exitosamente!\nPronto recibirás más información sobre nostros.'
       }), { status: 200 });
     }
 
