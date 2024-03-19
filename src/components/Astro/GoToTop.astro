@@ -1,11 +1,31 @@
 <a
   id="btnGoToUp"
   href="/#top"
-  class="w-14 h-14 rounded-xl hidden right-5 bottom-5 fixed bg-accent justify-center items-center transition-all hover:border-4 hover:border-white"
+  class="w-14 h-14 rounded-xl hidden right-5 bottom-5 fixed bg-accent justify-center items-center transition-all hover:border-4 hover:border-white animate-zoom-in"
 >
   <img src="/assets/icons/arrow-up.svg" alt="Icono de flecha hacia arriba" />
 </a>
 <script>
+  const validateIsInService = () => {
+    debugger;
+    const container = document.documentElement;
+    const containerHeight = container.scrollHeight - container.clientHeight;
+    const scrollPosition = container.scrollTop;
+
+    let id = "";
+
+    if (scrollPosition > containerHeight / 2) {
+      id = "btnServices";
+    } else {
+      id = "btnHome";
+    }
+
+    document
+      .getElementById(id === "btnServices" ? "btnHome" : "btnServices")
+      ?.classList.remove("border-b-accent");
+    document.getElementById(id)?.classList.add("border-b-accent");
+  };
+
   window.onscroll = () => {
     const buttonGoToUp = document.getElementById("btnGoToUp");
 
@@ -19,5 +39,7 @@
     } else {
       buttonGoToUp?.classList.add("hidden");
     }
+
+    validateIsInService();
   };
 </script>

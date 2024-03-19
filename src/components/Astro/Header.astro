@@ -22,9 +22,13 @@ const menu = [
 <header
   class="flex flex-row justify-between w-full items-center sticky top-0 py-2 px-10 z-10"
 >
-  <img src="/assets/img/logo.svg" alt="Logo de businessapp" />
+  <img
+    class="animate-slide-in-left"
+    src="/assets/img/logo.svg"
+    alt="Logo de businessapp"
+  />
 
-  <nav class="flex gap-7">
+  <nav class="flex gap-7 animate-slide-out-bottom">
     {
       menu.map((x) => (
         <HeaderButton href={x.href} id={x.id}>
@@ -40,14 +44,13 @@ const menu = [
   header {
     animation: enhance-header linear both;
     animation-timeline: scroll(root block);
-    animation-range: 0 400px;
+    animation-range: 0 100%;
   }
 
   @keyframes enhance-header {
     to {
       background-color: var(--color-secondary);
       backdrop-filter: blur(5px);
-      border-bottom: 2px solid white;
     }
   }
 </style>
@@ -77,4 +80,5 @@ const menu = [
   };
 
   addClickListener();
+  document.getElementById(menu[0].id).click();
 </script>

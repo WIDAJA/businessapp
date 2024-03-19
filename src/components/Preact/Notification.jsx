@@ -10,7 +10,7 @@ export default class Notification extends Component {
     let className = '';
 
     if (show) {
-      className = `text-black fixed bottom-5 h-14 p-5 rounded-xl shadow-2xl flex items-center gap-4 ${color}`;
+      className = `text-black fixed bottom-5 h-14 p-5 rounded-xl shadow-2xl flex items-center gap-4 ${color} animate-fade-in-up`;
     } else {
       className = 'hidden';
     }
