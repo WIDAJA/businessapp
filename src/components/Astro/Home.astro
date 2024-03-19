@@ -23,9 +23,11 @@ const businessTypes = [
 ];
 ---
 
-<article class="grid grid-cols-3 mb-20 gap-5 px-20">
+<article
+  class="grid grid-cols-1 sm:grid-cols-3 mb-20 gap-5 px-5 sm:px-20 sm:h-container"
+>
   <section
-    class="flex items-baseline justify-end mt-10 gap-2 animate-slide-in-left"
+    class="items-baseline justify-end mt-10 gap-2 animate-slide-in-left hidden sm:flex sm:h-container"
   >
     <img
       class="h-full"
@@ -39,30 +41,32 @@ const businessTypes = [
     />
   </section>
 
-  <section class="col-span-2 mt-20">
-    <h1 class="text-5xl px-2 relative animate-slide-in-top">
+  <section class="col-1 sm:col-span-2 mt-20 sm:h-container">
+    <h1
+      class="text-3xl sm:text-5xl text-center sm:text-left px-2 relative animate-slide-in-top"
+    >
       <span
-        class="absolute left-0 top-[-60px] -rotate-6 text-4xl soon bg-secondary py-2 px-6 text-accent shadow-md shadow-white/5 transition-all hover:bg-accent hover:text-secondary"
+        class="absolute left-0 top-[-60px] -rotate-6 text-2xl sm:text-4xl soon bg-secondary py-2 px-6 text-accent shadow-md shadow-white/5 transition-all hover:bg-accent hover:text-secondary"
       >
         Proximamente
       </span>
-      <p class="text-nowrap z-10">
-        Impulsa el éxito de tu
+      <p class="sm:text-nowrap z-10">
+        Impulsa el éxito de tu <br class="sm:hidden" />
         <span id="txtBusinessType" class="px-8 text-primary"> </span>
       </p>
       con un espacio único que permita a tus clientes reservar citas, consultar servicios,
       estar al tanto de noticias y mucho más.
     </h1>
     <div
-      class="grid grid-cols-2 bg-black/30 rounded-3xl mt-10 p-5 animate-fade-in-left"
+      class="grid grid-cols-1 sm:grid-cols-2 bg-black/30 rounded-3xl mt-10 sm:p-5 animate-fade-in-left"
     >
       <div
-        class="flex flex-col gap-5 justify-center border-r-2 border-white/80 p-5"
+        class="flex flex-col gap-5 justify-center sm:border-r-2 sm:border-white/80 p-5"
       >
-        <h2 class="text-2xl text-center font-bold">
+        <h2 class="text-xl sm:text-2xl text-center font-bold">
           ¿Quieres recibir más información sobre este proyecto?
         </h2>
-        <p class="text-center">
+        <p class="text-center text-sm sm:text-lg">
           Te mantendremos informado acerca de nuevas funcionalidades y servicios
           que tenemos para ti.
         </p>
@@ -77,8 +81,7 @@ const businessTypes = [
     font-family: "Podkova Variable", serif;
   }
 
-  article,
-  section {
+  .h-container {
     height: calc(100vh - 5rem - var(--header-desktop-height)) !important;
   }
 

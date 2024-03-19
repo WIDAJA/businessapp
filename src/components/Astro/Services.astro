@@ -3,6 +3,7 @@ import "@fontsource-variable/podkova";
 import "../../styles/variables.css";
 import config from "../../../astro.config.mjs";
 import HeaderServices from "./HeaderServices.astro";
+import Service from "../Preact/Service";
 
 interface Menu {
   id: string;
@@ -17,13 +18,19 @@ interface Menu {
 
 let menu: Menu[] = [];
 
-const result = await fetch(`http://localhost:${config.server.port}/assets/json/services.json`);
+const result = await fetch(
+  `http://localhost:${config.server.port}/assets/json/services.json`,
+);
 menu = await result.json();
 ---
 
-<article class="h-screen px-20" id="services">
+<article class="h-screen px-5 sm:px-20 sm:h-article" id="services">
   <HeaderServices menu={menu} />
-  {
+  <div class="sm:hidden">
+    <Service menu={menu} />
+  </div>
+  <div class="hidden">
+    {
     menu.map((x) => {
       return (
         <section
@@ -33,7 +40,7 @@ menu = await result.json();
           {x.images.map((y) => {
             return (
               <img
-                class="max-w-full max-h-full h-auto object-fit-cover"
+                class="max-w-full max-h-full h-auto object-fit-cover hidden sm:block"
                 src={y.name}
                 alt={y.alt}
               />
@@ -50,6 +57,7 @@ menu = await result.json();
       );
     })
   }
+  </div>
 </article>
 
 <style>
@@ -58,13 +66,13 @@ menu = await result.json();
     font-family: "Podkova Variable", serif;
   }
 
-  article {
+  .h-article {
     height: calc(
       100vh - var(--nav-desktop-height) - var(--header-desktop-height)
     ) !important;
   }
 
-  section {
+  .h.section {
     height: calc(
       100vh - var(--nav-desktop-height) - var(--header-desktop-height) - 6rem
     ) !important;

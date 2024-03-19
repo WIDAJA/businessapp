@@ -20,7 +20,7 @@ const menu = [
 ---
 
 <header
-  class="flex flex-row justify-between w-full items-center sticky top-0 py-2 px-10 z-10"
+  class="flex flex-row justify-center sm:justify-between w-full items-center sticky top-0 py-2 px-10 z-10"
 >
   <img
     class="animate-slide-in-left"
@@ -28,7 +28,7 @@ const menu = [
     alt="Logo de businessapp"
   />
 
-  <nav class="flex gap-7 animate-slide-out-bottom">
+  <nav class="gap-7 animate-slide-out-bottom hidden sm:flex">
     {
       menu.map((x) => (
         <HeaderButton href={x.href} id={x.id}>
