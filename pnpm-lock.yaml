@@ -26,6 +26,9 @@ dependencies:
   '@fontsource-variable/podkova':
     specifier: ^5.0.19
     version: 5.0.19
+  '@fontsource/permanent-marker':
+    specifier: ^5.0.8
+    version: 5.0.8
   astro:
     specifier: ^4.4.15
     version: 4.4.15(typescript@5.4.2)
@@ -717,6 +720,10 @@ packages:
 
   /@fontsource-variable/podkova@5.0.19:
     resolution: {integrity: sha512-gHTLQOw8D9+S2wg9+7952hU8lN9j4hDfMpNLYCkJeaUeuCSXb6Yw0PEieFa82Z6VWmQupTLDTvWxKyXse9VbiA==}
+    dev: false
+
+  /@fontsource/permanent-marker@5.0.8:
+    resolution: {integrity: sha512-1cHvFLU+szU2R/SfRy5g8o5Jq/gdTtK7HjQkdjezcwiQdSQDQegslG9jI8wr8AJqDK1D+F6l2KDfFBlshUxYmw==}
     dev: false
 
   /@isaacs/cliui@8.0.2:

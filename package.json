@@ -17,6 +17,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/plus-jakarta-sans": "^5.0.20",
     "@fontsource-variable/podkova": "^5.0.19",
+    "@fontsource/permanent-marker": "^5.0.8",
     "astro": "^4.4.15",
     "canvas-confetti": "^1.9.2",
     "preact": "^10.19.6",
