@@ -1,8 +1,8 @@
-import { Component } from "preact";
+import { Component } from "preact"
 
-export default class Service extends Component {
+export default class ServiceSmall extends Component {
 
-  render({ menu }, { }) {
+  render({ menu }) {
 
     return (
       <>
@@ -12,7 +12,7 @@ export default class Service extends Component {
           negocio
         </h2>
         {
-          menu.map((x, i) => {
+          menu?.map((x, i) => {
 
             const className = `mt-10 border-2 py-7 px-4 rounded-xl ${!(i % 2) ? 'border-accent' : 'border-green-400'} shadow-lg shadow-secondary`
 
