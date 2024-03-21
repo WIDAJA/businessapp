@@ -13,7 +13,7 @@ export default class Service extends Component {
   loadServices = async () => {
 
     const result = await fetch(
-      `http://localhost:3001/assets/json/services.json`,
+      `http://localhost:4321/assets/json/services.json`,
     );
 
     this.setState({ menu: (await result.json()) });
@@ -23,7 +23,7 @@ export default class Service extends Component {
 
     return (
       <>
-        <article class="h-screen px-5 sm:px-20 sm:h-article" id="services">
+        <article class="px-5 sm:px-20 sm:h-article" id="services">
           <div class="sm:hidden">
             <ServiceSmall menu={menu} />
           </div>

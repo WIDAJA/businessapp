@@ -11,6 +11,9 @@ export default class ServiceLarge extends Component {
   }
 
   componentWillReceiveProps({ menu }) {
+    menu[0].selected = true
+
+    this.setState({ serviceSelected: menu[0] })
     this.setState({ services: menu })
   }
 
@@ -50,14 +53,14 @@ export default class ServiceLarge extends Component {
         </nav>
         {
           serviceSelected &&
-          <section class="flex justify-center items-center gap-10 mt-10">
+          <section class="flex justify-center items-center gap-10 mt-10 size-services">
             {
               serviceSelected
                 .images
                 .map(x => {
                   return (
                     <img
-                      class="max-w-full max-h-full h-auto object-fit-cover hidden sm:block"
+                      class="max-w-full max-h-full h-auto object-fit-cover hidden sm:block animate-slide-in-left"
                       src={x.name}
                       alt={x.alt}
                     />

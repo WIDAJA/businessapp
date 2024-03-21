@@ -24,24 +24,19 @@ const businessTypes = [
 ---
 
 <article
-  class="grid grid-cols-1 sm:grid-cols-3 mb-20 gap-5 px-5 sm:px-20 sm:h-container"
+  class="grid grid-cols-1 sm:grid-cols-3 mb-20 gap-5 px-5 sm:px-20 sm:size"
 >
   <section
-    class="items-baseline justify-end mt-10 gap-2 animate-slide-in-left hidden sm:flex sm:h-container"
+    class="items-baseline justify-center mt-10 gap-2 animate-slide-in-left hidden sm:flex"
   >
     <img
-      class="h-full"
-      src="/assets/img/phone-dashboard-1.svg"
-      alt="Pantallazo del dashboard de la aplicación"
-    />
-    <img
-      class="h-3/4"
+      class="size"
       src="/assets/img/phone-menu.svg"
       alt="Pantallazo del dashboard de la aplicación"
     />
   </section>
 
-  <section class="col-1 sm:col-span-2 mt-20 sm:h-container">
+  <section class="col-1 sm:col-span-2 mt-20">
     <h1
       class="text-3xl sm:text-5xl text-center sm:text-left px-2 relative animate-slide-in-top"
     >
@@ -77,13 +72,12 @@ const businessTypes = [
 </article>
 
 <style>
-  h1 {
-    font-family: "Podkova Variable", serif;
+  .size {
+    height: calc(100vh - 5rem - 50px);
   }
 
-  .h-container {
-    height: calc(100vh - 5rem - var(--header-desktop-height)) !important;
-    background-color: red;
+  h1 {
+    font-family: "Podkova Variable", serif;
   }
 
   .soon {
