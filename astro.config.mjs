@@ -11,10 +11,10 @@ export default defineConfig({
   integrations: [tailwind(), db(), preact({
     compat: true
   })],
-  site: 'http://mybusinesapp.com/',
-  server: {
-    port: 3001
-  },
+  // site: 'http://mybusinessapp.com.co/',
+  // server: {
+  //   port: 3001
+  // },
   adapter: node({
     mode: "standalone"
   })
