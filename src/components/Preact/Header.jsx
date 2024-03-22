@@ -1,4 +1,8 @@
 import { Component } from "preact"
+import HomeIcon from "./icons/Home"
+import ServiceIcon from "./icons/Service"
+import LightIcon from "./icons/Light"
+import DarkIcon from "./icons/Dark"
 import "../../styles/header.css"
 
 export default class Header extends Component {
@@ -12,7 +16,7 @@ export default class Header extends Component {
           id: "btnHome",
           text: "Inicio",
           href: "/#top",
-          icon: "/assets/icons/home.svg",
+          icon: <HomeIcon width={24} height={24} />,
           alt: "Icono de inicio",
           selected: true,
           event: this.selectMenu
@@ -21,7 +25,7 @@ export default class Header extends Component {
           id: "btnServices",
           text: "Servicios",
           href: "/#services",
-          icon: "/assets/icons/service.svg",
+          icon: <ServiceIcon width={24} height={24} />,
           alt: "Icono de Servicios",
           selected: false,
           event: this.selectMenu
@@ -30,7 +34,7 @@ export default class Header extends Component {
           id: "btnTheme",
           text: "",
           href: "javascript:void(0)",
-          icon: "/assets/icons/light.svg",
+          icon: <LightIcon width={24} height={24} />,
           alt: "Tema claro",
           selected: false,
           event: this.changeTheme
@@ -39,7 +43,12 @@ export default class Header extends Component {
     }
   }
 
+  componentDidMount() {
+    this.changeIconTheme();
+  }
+
   selectMenu = (href) => {
+
     const { menu } = this.state;
 
     const menuCopy = [...menu];
@@ -53,17 +62,42 @@ export default class Header extends Component {
 
   changeTheme = () => {
 
-    const currentTheme = document.documentElement.classList[0];
+    const currentTheme = document.documentElement.classList[0]
+    const newTheme = currentTheme === 'dark'
+      ? 'light'
+      : 'dark'
 
-    document.documentElement.classList.remove(currentTheme);
-    document.documentElement.classList.add(currentTheme === 'dark' ? 'light' : 'dark');
+    document.documentElement.classList.remove(currentTheme)
+    document.documentElement.classList.add(newTheme)
+
+    localStorage.setItem('theme', newTheme)
+
+    this.changeIconTheme()
+  }
+
+  changeIconTheme = () => {
+
+    const theme = localStorage.getItem('theme')
+
+    const { menu } = this.state
+    const menuCopy = [...menu]
+
+    const index = menuCopy.findIndex(x => x.id === 'btnTheme')
+    if (index === -1)
+      return
+
+    menuCopy[index].icon = !theme || theme === 'dark'
+      ? <LightIcon width={24} height={24} />
+      : <DarkIcon width={24} height={24} />
+
+    this.setState({ menu: menuCopy })
   }
 
   render({ }, { menu }) {
 
     return (
       <header
-        class="flex flex-row justify-center sm:justify-between w-full items-center sticky top-0 py-2 px-10 z-10">
+        class="flex flex-row justify-center sm:justify-between w-full items-center sticky top-0 py-2 px-10 z-10 main-header">
         <img
           class="animate-slide-in-left"
           src="/assets/img/logo.svg"
@@ -74,9 +108,9 @@ export default class Header extends Component {
               <a
                 id={x.id}
                 href={x.href}
-                class={`flex gap-2 items-center text-[17px] text-primary dark:text-white border-b-[3px] border-transparent pb-1 cursor-pointer transition-all hover:border-b-accent ${x.selected ? 'border-b-accent' : ''}`}
+                class={`flex gap-2 font-semibold items-center text-[17px] text-primary dark:text-white border-b-[3px] border-transparent pb-1 cursor-pointer transition-all hover:border-b-accent ${x.selected ? 'border-b-accent' : ''}`}
                 onClick={() => x.event(x)}>
-                <img src={x.icon} alt={x.alt} />
+                {x.icon}
                 {x.text}
               </a>
             ))

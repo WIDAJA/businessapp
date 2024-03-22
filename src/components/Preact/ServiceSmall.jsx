@@ -6,8 +6,8 @@ export default class ServiceSmall extends Component {
 
     return (
       <>
-        <h1 class="text-4xl text-center">- Servicios -</h1>
-        <h2 class="text-center">
+        <h1 class="text-4xl text-center text-primary dark:text-white">- Servicios -</h1>
+        <h2 class="text-center  text-primary dark:text-white">
           Estos son algunos de los servicios que tenemos para ayudar a impulsar tu
           negocio
         </h2>
@@ -18,8 +18,8 @@ export default class ServiceSmall extends Component {
 
             return (
               <section className={className}>
-                <header class="text-center text-2xl font-bold">{x.name}</header>
-                <p class="mt-4">{x.text}</p>
+                <header class="text-center text-2xl font-bold text-primary dark:text-white">{x.name}</header>
+                <p class="mt-4  text-primary dark:text-white">{x.text}</p>
               </section>
             )
           })

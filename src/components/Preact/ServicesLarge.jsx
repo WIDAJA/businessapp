@@ -69,11 +69,11 @@ export default class ServiceLarge extends Component {
             }
             <div class="flex justify-center flex-col">
               <header>
-                <h1 class="text-4xl font-bold">
+                <h1 class="text-4xl font-bold text-primary dark:text-white">
                   {serviceSelected.name}
                 </h1>
               </header>
-              <p class="text-3xl mt-5">
+              <p class="text-3xl mt-5  text-primary dark:text-white">
                 {serviceSelected.text}
               </p>
             </div>

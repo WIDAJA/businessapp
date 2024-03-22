@@ -82,12 +82,9 @@ export default class Home extends Component {
               con un espacio único que permita a tus clientes reservar citas, consultar servicios,
               estar al tanto de noticias y mucho más.
             </h1>
-            <div
-              class="grid grid-cols-1 sm:grid-cols-2 bg-black/30 rounded-3xl mt-10 sm:p-5 animate-slide-in-right">
-              <ProspectForm onShowNotify={this.showNotify} onCloseNotify={this.closeNotify} />
-            </div>
+            <ProspectForm onShowNotify={this.showNotify} onCloseNotify={this.closeNotify} />
           </section>
-        </article>
+        </article >
         <Notification
           onCloseNotify={this.closeNotify}
           show={showNotify}

@@ -1,6 +1,6 @@
 import { Component } from "preact";
-import CheckIcon from "./CheckIcon";
-import ErrorIcon from "./ErrorIcon";
+import CheckIcon from "./icons/Check";
+import ErrorIcon from "./icons/Error";
 
 export default class Notification extends Component {
 
