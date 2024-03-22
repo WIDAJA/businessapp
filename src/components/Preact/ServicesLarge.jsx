@@ -80,7 +80,7 @@ export default class ServiceLarge extends Component {
                     serviceSelected
                       .beneficios
                       ?.map(x => (
-                        <section class="flex-1 border-2 border-accent p-5 rounded-lg shadow-lg cursor-pointer transition-all hover:dark:border-accent hover:border-primary hover:scale-105">
+                        <section class="flex-1 border-2 border-accent dark:border-white/40 p-5 rounded-lg shadow-2xl cursor-pointer transition-all hover:dark:border-accent hover:border-primary hover:scale-105 dark:bg-[url('assets/icons/bg1-dark.svg')] bg-[url('assets/icons/bg1-light.svg')]">
                           <p class="text-primary dark:text-white text-center font-semibold">
                             {x.text}
                           </p>

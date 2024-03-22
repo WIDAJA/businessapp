@@ -57,7 +57,7 @@ export default class ProspectForm extends Component {
     return (
       <>
         <div
-          class="grid grid-cols-1 sm:grid-cols-2 bg-white/30 dark:bg-black/30 rounded-3xl mt-10 sm:p-5 shadow-2xl animate-slide-in-right">
+          class="grid grid-cols-1 sm:grid-cols-2 bg-white/30 dark:bg-black/30 rounded-3xl mt-10 sm:p-5 shadow-2xl dark:shadow-white/5 animate-slide-in-right">
           <div
             class="flex flex-col gap-5 justify-center sm:border-r-2 sm:dark:border-white/80 border-primary/80 p-5"
           >

@@ -14,7 +14,7 @@ export default class ServiceSmall extends Component {
         {
           menu?.map((x, i) => {
 
-            const className = `mt-10 border-2 py-7 px-4 rounded-xl ${!(i % 2) ? 'border-accent' : 'border-green-400'} shadow-lg shadow-secondary`
+            const className = `dark:bg-[url('assets/icons/bg1-dark.svg')] bg-[url('assets/icons/bg1-light.svg')] mt-10 border-2 py-7 px-4 rounded-xl ${!(i % 2) ? 'border-accent' : 'border-green-400'} shadow-2xl dark:shadow-white/5`
 
             return (
               <section className={className}>
