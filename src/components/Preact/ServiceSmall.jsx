@@ -6,7 +6,7 @@ export default class ServiceSmall extends Component {
 
     return (
       <>
-        <h1 class="sm:hidden text-4xl text-center">- Servicios -</h1>
+        <h1 class="text-4xl text-center">- Servicios -</h1>
         <h2 class="text-center">
           Estos son algunos de los servicios que tenemos para ayudar a impulsar tu
           negocio

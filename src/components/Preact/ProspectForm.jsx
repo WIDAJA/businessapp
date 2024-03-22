@@ -5,6 +5,7 @@ export default class ProspectForm extends Component {
 
   constructor(props) {
     super(props)
+
     this.state = { email: '' }
   }
 
@@ -24,27 +25,22 @@ export default class ProspectForm extends Component {
 
     fetch('http://localhost:4321/api/createProspect.json', init)
       .then(response => response.json())
-      .then(({ success, message }) => {
+      .then(data => {
+        this.props.onShowNotify(data)
 
-        this.setState({ message });
-        this.setState({ success });
-
-        if (success) {
-          this.showConfetti();
-        }
+        if (data.success)
+          this.showConfetti()
       })
       .catch(() => {
-        this.setState({
-          message: 'Se está presentado un problema para inscribir el correo. Por favor prueba de nuevo más tarde.'
-        });
+        const message = 'Se está presentado un problema para inscribir el correo. Por favor prueba de nuevo más tarde.';
+        this.props.onShowNotify({ message, success: false })
       })
       .finally(() => {
-        this.setState({ show: true });
-        this.setState({ email: '' });
+        this.setState({ email: '' })
 
         setTimeout(() => {
-          this.closeNotify();
-        }, 1000 * 5);
+          this.props.onCloseNotify()
+        }, 1000 * 5)
       });
   }
 
@@ -54,10 +50,6 @@ export default class ProspectForm extends Component {
       spread: 70,
       origin: { y: 0.6 }
     });
-  }
-
-  closeNotify = () => {
-    this.setState({ show: false })
   }
 
   render({ }, { email }) {

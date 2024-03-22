@@ -19,7 +19,6 @@ const { title } = Astro.props;
 			content="MyBusinessApp es una software que ayuda a profesionalizar negocios cómo barberías, peluquerías, salones de belleza, etc. Entregan una amplia variedad de herramientas tales como: creación de negocios, trabajadores, servicios, agendamiento virtual y un espacio para los clientes donde pueden visualizar promociones, fotos de los trabajos realizados, agendar citas y demás."
 		/>
 		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
 		<meta name="theme-color" content="#16132C" />
 		<title>{title}</title>
 
@@ -56,7 +55,7 @@ const { title } = Astro.props;
 			}
 		</style>
 	</head>
-	<body class="dark:bg-primary bg-white min-h-screen">
+	<body class="bg-white dark:bg-primary min-h-screen">
 		<slot />
 		<GoToTop />
 	</body>

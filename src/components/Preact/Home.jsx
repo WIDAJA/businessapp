@@ -15,7 +15,10 @@ export default class Home extends Component {
     this.index = 0
 
     this.state = {
-      business: this.businessTypes[this.index++]
+      business: this.businessTypes[this.index++],
+      showNotify: false,
+      messageNotify: '',
+      successNotify: false
     }
   }
 
@@ -34,17 +37,28 @@ export default class Home extends Component {
     })
 
     if (this.index === this.businessTypes.length)
-      this.index = 0;
+      this.index = 0
   }
 
-  render({ }, { business }) {
+  closeNotify = () => {
+    this.setState({ showNotify: false })
+  }
+
+  showNotify = ({ message, success }) => {
+    this.setState({ messageNotify: message });
+    this.setState({ successNotify: success });
+    this.setState({ showNotify: true });
+  }
+
+  render({ }, { business, showNotify, messageNotify, successNotify }) {
 
     return (
       <>
         <article
-          class="grid grid-cols-1 sm:grid-cols-3 mb-20 gap-5 px-5 sm:px-20 sm:size">
+          class="grid grid-cols-1 lg:grid-cols-3 mb-20 gap-5 px-5 sm:px-20 sm:size">
+
           <section
-            class="items-baseline justify-center mt-10 gap-2 animate-slide-in-left hidden sm:flex">
+            class="items-baseline justify-center mt-10 gap-2 animate-slide-in-left hidden sm:flex md:hidden lg:flex xl:flex">
             <img
               class="size"
               src="/assets/img/phone-menu.svg"
@@ -60,7 +74,7 @@ export default class Home extends Component {
                 Proximamente
               </span>
               <p class="sm:text-nowrap z-10">
-                Impulsa el éxito de tu <br class="sm:hidden" />
+                Impulsa el éxito de tu <br class="lg:hidden" />
                 <span class="px-8 bg-accent text-secondary">
                   {business}
                 </span>
@@ -69,12 +83,16 @@ export default class Home extends Component {
               estar al tanto de noticias y mucho más.
             </h1>
             <div
-              class="grid grid-cols-1 sm:grid-cols-2 bg-black/30 rounded-3xl mt-10 sm:p-5 animate-fade-in-left">
-              <ProspectForm />
+              class="grid grid-cols-1 sm:grid-cols-2 bg-black/30 rounded-3xl mt-10 sm:p-5 animate-slide-in-right">
+              <ProspectForm onShowNotify={this.showNotify} onCloseNotify={this.closeNotify} />
             </div>
           </section>
         </article>
-        <Notification />
+        <Notification
+          onCloseNotify={this.closeNotify}
+          show={showNotify}
+          message={messageNotify}
+          success={successNotify} />
       </>
     )
   }

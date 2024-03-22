@@ -1,0 +1,21 @@
+html {
+  font-family: "Plus Jakarta Sans Variable", sans-serif;
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+pre {
+  font-family: "Plus Jakarta Sans Variable", sans-serif;
+}
+
+.size-services {
+  height: calc(100vh - 2.5rem - 130px);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-image: url("assets/img/background-dark.svg");
+    background-position: center;
+    background-size: cover;
+  }
+}

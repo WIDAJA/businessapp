@@ -24,10 +24,10 @@ export default class Service extends Component {
     return (
       <>
         <article class="px-5 sm:px-20 sm:h-article" id="services">
-          <div class="sm:hidden">
+          <div class="lg:hidden">
             <ServiceSmall menu={menu} />
           </div>
-          <div class="hidden sm:block">
+          <div class="hidden lg:block">
             <ServiceLarge menu={menu} />
           </div>
         </article>
