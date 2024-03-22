@@ -1,12 +1,14 @@
 import { Component } from "preact";
 import confetti from "canvas-confetti";
-import Notification from "./Notification";
 
 export default class ProspectForm extends Component {
 
-  state = { email: '', message: '', success: false, show: false };
+  constructor(props) {
+    super(props)
+    this.state = { email: '' }
+  }
 
-  setEmail = e => this.setState({ email: e.currentTarget.value });
+  setEmail = e => this.setState({ email: e.currentTarget.value })
 
   saveEmail = () => {
 
@@ -20,7 +22,7 @@ export default class ProspectForm extends Component {
       }
     };
 
-    fetch('http://localhost:3001/api/createProspect.json', init)
+    fetch('http://localhost:4321/api/createProspect.json', init)
       .then(response => response.json())
       .then(({ success, message }) => {
 
@@ -31,8 +33,10 @@ export default class ProspectForm extends Component {
           this.showConfetti();
         }
       })
-      .catch(err => {
-        // @todo -> Mostart el mensaje
+      .catch(() => {
+        this.setState({
+          message: 'Se está presentado un problema para inscribir el correo. Por favor prueba de nuevo más tarde.'
+        });
       })
       .finally(() => {
         this.setState({ show: true });
@@ -42,7 +46,7 @@ export default class ProspectForm extends Component {
           this.closeNotify();
         }, 1000 * 5);
       });
-  };
+  }
 
   showConfetti = () => {
     confetti({
@@ -50,22 +54,37 @@ export default class ProspectForm extends Component {
       spread: 70,
       origin: { y: 0.6 }
     });
-  };
+  }
 
   closeNotify = () => {
-    this.setState({ show: false });
-  };
+    this.setState({ show: false })
+  }
 
-  render({ }, { email, message, success, show }) {
+  render({ }, { email }) {
     return (
       <>
+        <div
+          class="flex flex-col gap-5 justify-center sm:border-r-2 sm:dark:border-white/80 border-primary/80 p-5"
+        >
+          <h2
+            class="text-xl sm:text-2xl text-center font-bold text-primary dark:text-white"
+          >
+            ¿Quieres recibir más información sobre este proyecto?
+          </h2>
+          <p class="text-center text-sm sm:text-lg text-primary dark:text-white">
+            Te mantendremos informado acerca de nuevas funcionalidades y servicios
+            que tenemos para ti.
+          </p>
+        </div>
         <form
           action="javascript:void(0);"
           onSubmit={this.saveEmail}
-          class="flex flex-col gap-5 justify-center p-6" >
+          class="flex flex-col gap-5 justify-center p-6">
 
-          <div class="flex flex-col border-2 border-white/50 p-2">
-            <label for="txtEmail">Correo electrónico</label>
+          <div class="flex flex-col border-2 border-primary/50 dark:border-white/50 p-2">
+            <label for="txtEmail" class="text-primary dark:text-white">
+              Correo electrónico
+            </label>
             <div class="flex gap-4 mt-2">
               <img
                 src="/assets/icons/email.svg"
@@ -75,7 +94,7 @@ export default class ProspectForm extends Component {
                 name="txtEmail"
                 type="email"
                 placeholder="Ingresa tu correo electrónico"
-                class="w-full h-10 bg-transparent focus:outline-none"
+                class="w-full h-10 bg-transparent focus:outline-none text-primary dark:text-white"
                 value={email}
                 onInput={this.setEmail}
                 required
@@ -87,14 +106,13 @@ export default class ProspectForm extends Component {
             type="submit"
             class="relative inline-flex items-center justify-center p-0.5 rounded-md overflow-hidden text-xl font-medium group bg-gradient-to-br from-accent to-violet-600">
             <span
-              class="relative w-full px-5 py-2.5 transition-all rounded-md ease-in duration-75 bg-primary group-hover:bg-opacity-0">
+              class="relative w-full px-5 py-2.5 transition-all rounded-md ease-in duration-75 text-primary dark:text-white bg-white dark:bg-primary group-hover:bg-opacity-0">
               Notificarme
             </span>
           </button>
 
         </form>
-        <Notification message={message} success={success} show={show} onClose={this.closeNotify} />
       </>
     )
-  };
+  }
 }

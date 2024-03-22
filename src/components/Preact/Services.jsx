@@ -6,7 +6,7 @@ export default class Service extends Component {
 
   state = { menu: [] }
 
-  componentWillMount() {
+  componentDidMount() {
     this.loadServices();
   }
 

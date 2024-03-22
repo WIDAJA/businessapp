@@ -10,7 +10,8 @@ export default {
 				'secondary': '#2E294E',
 				'accent': '#DB90FF'
 			}
-		},
+		}
 	},
+	darkMode: 'selector',
 	plugins: [animations],
 }
