@@ -53,7 +53,7 @@ export default class ServiceLarge extends Component {
         </nav>
         {
           serviceSelected &&
-          <section class="flex justify-center items-center gap-10 mt-10 size-services">
+          <section class="flex gap-10 mt-10 size-services">
             {
               serviceSelected
                 .images
@@ -67,17 +67,31 @@ export default class ServiceLarge extends Component {
                   );
                 })
             }
-            <div class="flex justify-center flex-col">
-              <header>
-                <h1 class="text-4xl font-bold text-primary dark:text-white">
-                  {serviceSelected.name}
-                </h1>
-              </header>
-              <p class="text-3xl mt-5  text-primary dark:text-white">
+            <div class="flex flex-col gap-5">
+              <p class="text-2xl text-primary dark:text-white font-semibold">
                 {serviceSelected.text}
               </p>
-            </div>
-          </section>
+              <footer>
+                <h2 class="text-primary font-light dark:text-accent text-4xl mt-4">
+                  ¿Qué te ofrecemos?
+                </h2>
+                <div class="flex gap-5 mt-10">
+                  {
+                    serviceSelected
+                      .beneficios
+                      ?.map(x => (
+                        <section class="flex-1 border-2 border-accent p-5 rounded-lg shadow-lg cursor-pointer transition-all hover:dark:border-accent hover:border-primary hover:scale-105">
+                          <p class="text-primary dark:text-white text-center font-semibold">
+                            {x.text}
+                          </p>
+                        </section>
+                      ))
+                  }
+                </div>
+              </footer>
+            </div >
+
+          </section >
         }
       </>
     )

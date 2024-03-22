@@ -9,6 +9,20 @@
         "name": "/assets/img/phone-dashboard-1.svg",
         "alt": "Imagen representativa de la sección dashboard de la app"
       }
+    ],
+    "beneficios": [
+      {
+        "text": "Visualización de la información general de tu negocio: ubicación, horario, servicios, etc."
+      },
+      {
+        "text": "Visualización de promociones o eventos."
+      },
+      {
+        "text": "Visualización de fotos sobre los resultados de tus servicios."
+      },
+      {
+        "text": "Herramienta de agendamiento de citas."
+      }
     ]
   },
   {
@@ -24,6 +38,20 @@
       {
         "name": "/assets/img/phone-calendar-2.svg",
         "alt": "Imagen representativa de la sección agenda de la app"
+      }
+    ],
+    "beneficios": [
+      {
+        "text": "Gestión del estado de las citas."
+      },
+      {
+        "text": "Envío de recordatorios."
+      },
+      {
+        "text": "Históricos de agendamientos y solicitudes."
+      },
+      {
+        "text": "Detalle de la cita: horario, cliente, servicios y precios."
       }
     ]
   },
@@ -41,6 +69,20 @@
         "name": "/assets/img/phone-business-2.svg",
         "alt": "Imagen representativa de la sección negocios de la app"
       }
+    ],
+    "beneficios": [
+      {
+        "text": "Información del servicio: descripción, fotos y precio."
+      },
+      {
+        "text": "Información general de los trabajadores."
+      },
+      {
+        "text": "Código QR del portal del negocio."
+      },
+      {
+        "text": "Notificaciones personalizadas a todos tus clientes registrados."
+      }
     ]
   },
   {
@@ -56,6 +98,14 @@
       {
         "name": "/assets/img/phone-report-2.svg",
         "alt": "Imagen representativa de la sección reportes de la app"
+      }
+    ],
+    "beneficios": [
+      {
+        "text": "Información en tiempo real de los ingresos y egresos del negocio."
+      },
+      {
+        "text": "Información relevante sobre los resultados del día trabajado."
       }
     ]
   }
