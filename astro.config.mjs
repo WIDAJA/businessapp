@@ -2,8 +2,9 @@ import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 import db from "@astrojs/db";
 import preact from "@astrojs/preact";
-
 import node from "@astrojs/node";
+
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,11 +12,5 @@ export default defineConfig({
   integrations: [tailwind(), db(), preact({
     compat: true
   })],
-  // site: 'http://mybusinessapp.com.co/',
-  // server: {
-  //   port: 3001
-  // },
-  adapter: node({
-    mode: "standalone"
-  })
+  adapter: vercel()
 });
