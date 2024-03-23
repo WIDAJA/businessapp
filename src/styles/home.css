@@ -1,0 +1,32 @@
+.size {
+  height: calc(100vh - 5rem - 50px);
+}
+
+h1 {
+  font-family: "Podkova Variable", serif;
+}
+
+.soon {
+  font-family: "Permanent Marker", cursive;
+}
+
+.soon::after {
+  top: 19px;
+  content: "\219D";
+  font-size: 5rem;
+  position: fixed;
+  color: #db90ff;
+  transform: rotate(93deg);
+}
+
+@media (prefers-color-scheme: dark) {
+  .soon:hover::after {
+    color: white;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .soon:hover::after {
+    color: red;
+  }
+}

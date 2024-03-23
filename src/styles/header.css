@@ -1,0 +1,11 @@
+.main-header {
+  animation: enhance-header linear both;
+  animation-timeline: scroll(root block);
+  animation-range: 0 100%;
+}
+
+@keyframes enhance-header {
+  100% {
+    backdrop-filter: blur(8px);
+  }
+}

@@ -6,14 +6,14 @@ export default class Service extends Component {
 
   state = { menu: [] }
 
-  componentWillMount() {
+  componentDidMount() {
     this.loadServices();
   }
 
   loadServices = async () => {
 
     const result = await fetch(
-      `http://localhost:3001/assets/json/services.json`,
+      `http://localhost:4321/assets/json/services.json`,
     );
 
     this.setState({ menu: (await result.json()) });
@@ -23,11 +23,11 @@ export default class Service extends Component {
 
     return (
       <>
-        <article class="h-screen px-5 sm:px-20 sm:h-article" id="services">
-          <div class="sm:hidden">
+        <article class="px-5 sm:px-20 sm:h-article" id="services">
+          <div class="lg:hidden">
             <ServiceSmall menu={menu} />
           </div>
-          <div class="hidden sm:block">
+          <div class="hidden lg:block">
             <ServiceLarge menu={menu} />
           </div>
         </article>

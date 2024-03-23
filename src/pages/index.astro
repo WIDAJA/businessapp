@@ -1,14 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Home from "../components/Astro/Home.astro";
-import Header from "../components/Astro/Header.astro";
+import Header from "../components/Preact/Header";
+import Home from "../components/Preact/Home";
 import Services from "../components/Preact/Services";
 ---
 
 <Layout title="Businessapp">
-  <Header />
+  <Header client:load />
   <main>
-    <Home />
-    <Services client:visible />
+    <Home client:load />
+    <Services client:load />
   </main>
 </Layout>
