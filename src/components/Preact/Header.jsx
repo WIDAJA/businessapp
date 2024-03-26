@@ -3,6 +3,7 @@ import HomeIcon from "./icons/Home"
 import ServiceIcon from "./icons/Service"
 import LightIcon from "./icons/Light"
 import DarkIcon from "./icons/Dark"
+import Logo from "./icons/Logo"
 import "../../styles/header.css"
 
 export default class Header extends Component {
@@ -98,10 +99,7 @@ export default class Header extends Component {
     return (
       <header
         class="flex flex-row justify-center sm:justify-between w-full items-center sticky top-0 py-2 px-10 z-10 main-header">
-        <img
-          class="animate-slide-in-left"
-          src="/assets/img/logo.svg"
-          alt="Logo de businessapp" />
+        <Logo width={212} height={50} />
         <nav class="gap-7 animate-slide-in-top hidden sm:flex">
           {
             menu?.map(x => (

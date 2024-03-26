@@ -10,5 +10,9 @@ export default defineConfig({
   integrations: [tailwind(), db(), preact({
     compat: true
   })],
-  adapter: vercel()
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  })
 });
