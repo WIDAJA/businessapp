@@ -13,7 +13,7 @@ export default class Service extends Component {
   loadServices = async () => {
 
     const result = await fetch(
-      `http://localhost:4321/assets/json/services.json`,
+      `https://www.mybusinesapp.com/assets/json/services.json`,
     );
 
     this.setState({ menu: (await result.json()) });
