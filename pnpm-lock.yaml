@@ -32,6 +32,9 @@ dependencies:
   '@midudev/tailwind-animations':
     specifier: ^0.0.7
     version: 0.0.7(tailwindcss@3.4.1)
+  '@vercel/analytics':
+    specifier: ^1.2.2
+    version: 1.2.2
   '@vercel/speed-insights':
     specifier: ^1.0.10
     version: 1.0.10

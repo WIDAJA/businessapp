@@ -48,7 +48,7 @@ export default class Header extends Component {
     this.changeIconTheme();
   }
 
-  selectMenu = (href) => {
+  selectMenu = ({ href }) => {
 
     const { menu } = this.state;
 
