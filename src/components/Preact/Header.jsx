@@ -48,7 +48,7 @@ export default class Header extends Component {
     this.changeIconTheme();
   }
 
-  selectMenu = (href) => {
+  selectMenu = ({ href }) => {
 
     const { menu } = this.state;
 
@@ -98,9 +98,9 @@ export default class Header extends Component {
 
     return (
       <header
-        class="flex flex-row justify-center sm:justify-between w-full items-center sticky top-0 py-2 px-10 z-10 main-header">
+        class="flex flex-col gap-2 md:flex-row justify-center sm:justify-between w-full items-center sticky top-0 py-2 px-14 z-10 main-header">
         <Logo width={212} height={50} />
-        <nav class="gap-7 animate-slide-in-top hidden sm:flex">
+        <nav class="gap-7 animate-slide-in-top flex">
           {
             menu?.map(x => (
               <a
