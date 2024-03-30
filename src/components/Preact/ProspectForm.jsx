@@ -24,7 +24,7 @@ export default class ProspectForm extends Component {
       }
     };
 
-    fetch('https://www.mybusinesapp.com/api/createProspect.json', init)
+    fetch('https://www.mybusinessapp.com.co/api/createProspect.json', init)
       .then(response => response.json())
       .then(data => {
         this.props.onShowNotify(data)
